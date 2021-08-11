@@ -1,0 +1,34 @@
+export const SWAPI_ROOT = 'https://swapi.dev/api/';
+export const SWAPI_PEOPLE = 'people';
+export const SWAPI_PLANETS = 'planets';
+export const SWAPI_SPECIES = 'species';
+
+export const SWAPI_PARAMS_PAGE = '/?page=';
+export const SWAPI_PARAMS_SEARCH = '/?search=';
+
+export const API_PEOPLE = SWAPI_ROOT+SWAPI_PEOPLE+SWAPI_PARAMS_PAGE;
+export const API_PERSON = SWAPI_ROOT+SWAPI_PEOPLE;
+export const API_PERSON_SEARCH = SWAPI_ROOT+SWAPI_PEOPLE+SWAPI_PARAMS_SEARCH;
+
+export const API_PLANETS = SWAPI_ROOT+SWAPI_PLANETS+SWAPI_PARAMS_PAGE;
+export const API_PLANET = SWAPI_ROOT+SWAPI_PLANETS;
+export const API_PLANET_SEARCH = SWAPI_ROOT+SWAPI_PLANETS+SWAPI_PARAMS_SEARCH;
+
+export const API_SPECIES = SWAPI_ROOT+SWAPI_SPECIES+SWAPI_PARAMS_PAGE;
+export const API_SPECIES_INFO = SWAPI_ROOT+SWAPI_SPECIES;
+export const API_SPECIES_SEARCH = SWAPI_ROOT+SWAPI_SPECIES+SWAPI_PARAMS_SEARCH;
+
+
+const VGUIDE_ROOT_IMG = 'https://starwars-visualguide.com/assets/img/';
+const VGUIDE_CHARACTERS = 'characters';
+
+
+export const VGUIDE_IMG_EXTENSION = '.jpg';
+
+export const URL_IMG_PERSON = VGUIDE_ROOT_IMG+VGUIDE_CHARACTERS;
+export const URL_IMG_PLANETS = VGUIDE_ROOT_IMG+SWAPI_PLANETS;
+export const URL_IMG_SPECIES = VGUIDE_ROOT_IMG+SWAPI_SPECIES;
+
+
+
+//characters/1.jpg
