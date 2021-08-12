@@ -16,7 +16,6 @@ import NotFoundPage from "@containers/NotFoundPage";
 const routesConfig = [
     {
         path: '/',
-        exact: true,
         component: HomePage
     },
     {

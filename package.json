@@ -15,12 +15,10 @@
     "react-router": "^5.2.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "next start",
+    "build": "next build",
     "eject": "react-scripts eject",
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
     "lint": "next lint"
   },
   "eslintConfig": {

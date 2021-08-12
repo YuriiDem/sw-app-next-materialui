@@ -7,9 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Container from "@material-ui/core/Container";
-import Characters from './img/characters.jpg';
-import Species from './img/species.jpg';
-import Planets from './img/planets.png';
+import Characters from '../public/img/characters.jpg';
+import Species from '../public/img/species.jpg';
+import Planets from '../public/img/planets.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Link from 'next/link';
@@ -30,7 +30,7 @@ function HomePage() {
         <h2>Сategories</h2>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
-            <Link href="/people/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link href="/PeoplePage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
               <Card elevation={5} classes={{ root: classes.card }}>
                 <CardMedia
                   height="340"
@@ -45,7 +45,7 @@ function HomePage() {
             </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Link href="/planets/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link href="/PlanetsPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
               <Card elevation={5} classes={{ root: classes.card }}>
                 <CardMedia
                   height="340"
@@ -61,7 +61,7 @@ function HomePage() {
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Link href="/species/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link href="/SpeciesPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
               <Card elevation={5} classes={{ root: classes.card }}>
                 <CardMedia
                   height="340"
