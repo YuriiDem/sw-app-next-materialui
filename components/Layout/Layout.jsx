@@ -8,7 +8,7 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 // import { REPO_NAME } from '@constants/repo';
-
+import Head from 'next/head'
 
 
 
@@ -26,30 +26,25 @@ function Layout({ children }) {
 
   return (
     <>
-      {/* <BrowserRouter basename={`/${REPO_NAME}/`}> */}
+
+      <div>
+        <Head>
+          <title>SW NEXT App for QS</title>
+        </Head>
+      </div>
 
       <ThemeProvider theme={appliedTheme}>
         <CssBaseline />
+
         <Header theme={theme} setTheme={setTheme} />
         <Toolbar />
+
         <Container>
           {children}
-
-          {/* <Switch> */}
-          {/* {routesConfig.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              ))} */}
-          {/* </Switch> */}
-
         </Container>
 
       </ThemeProvider>
-      {/* </BrowserRouter> */}
+
     </>
   );
 }

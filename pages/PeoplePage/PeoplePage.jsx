@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { getApiResources } from '../../utils/network';
+import { getStaticProps } from '../../utils/network';
 import { API_PEOPLE } from '../../constants/api';
 import { API_PERSON_SEARCH } from '../../constants/api';
 import { getPeopleId, getPeopleImg, getPageId } from '../../services/getPeopleData';
@@ -10,7 +10,7 @@ import PeopleList from '../../components/PeoplePage/PeopleList';
 import PeopleNav from '../../components/PeoplePage/PeopleNav';
 import SearchBar from '../../components/SearchBar';
 import { withErrorApi } from '../../hoc-helpers/withErrorApi';
-import { useQueryParams } from '../../hooks/useQueryParams';
+// import { useQueryParams } from '../../hooks/useQueryParams';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import { useRouter } from 'next/router';
@@ -34,10 +34,10 @@ function PeoplePage({ setApiError }) {
 
 
   async function getResources(url) {
-    const res = await getApiResources(url);
-
+    const res = await getStaticProps(url);
+    console.log(res)
     if (res) {
-      const peopleList = res.results.map(({ name, url }) => {
+      const peopleList = res.props.data.results.map(({ name, url }) => {
         const id = getPeopleId(url);
         const img = getPeopleImg(id);
 
@@ -51,8 +51,8 @@ function PeoplePage({ setApiError }) {
       setPeople(peopleList);
       setLoading(false);
 
-      setPrev(res.previous);
-      setNext(res.next);
+      setPrev(res.props.data.previous);
+      setNext(res.props.data.next);
       setCounterPage(getPageId(url));
       setApiError(false);
     } else {
@@ -67,6 +67,7 @@ function PeoplePage({ setApiError }) {
   return (
     <>
       <h2>Characters</h2>
+
       <PeopleNav
         resource={'PeoplePage'}
         getResources={getResources}

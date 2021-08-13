@@ -7,12 +7,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Container from "@material-ui/core/Container";
-import Characters from '../public/img/characters.jpg';
-import Species from '../public/img/species.jpg';
-import Planets from '../public/img/planets.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Link from 'next/link';
+
 
 const useStyles = makeStyles({
   card: {
@@ -27,55 +25,55 @@ function HomePage() {
   const classes = useStyles();
   return (
     <>
-        <h2>Сategories</h2>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Link href="/PeoplePage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Card elevation={5} classes={{ root: classes.card }}>
-                <CardMedia
-                  height="340"
-                  component="img"
-                  src={Characters}
-                  title="Characters"
-                />
-                <CardContent>
-                  <Typography variant="h6"><strong>Characters</strong></Typography>
-                </CardContent>
-              </Card>
-            </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Link href="/PlanetsPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Card elevation={5} classes={{ root: classes.card }}>
-                <CardMedia
-                  height="340"
-                  component="img"
-                  src={Planets}
-                  title="Planets"
-                />
-                <CardContent>
-                  <Typography variant="h6"><strong>Planets</strong></Typography>
-                </CardContent>
-              </Card>
-            </Link>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4}>
-            <Link href="/SpeciesPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <Card elevation={5} classes={{ root: classes.card }}>
-                <CardMedia
-                  height="340"
-                  component="img"
-                  src={Species}
-                  title="Species"
-                />
-                <CardContent>
-                  <Typography variant="h6"><strong>Species</strong></Typography>
-                </CardContent>
-              </Card>
-            </Link>
-          </Grid>
+      <h2>Сategories</h2>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Link href="/PeoplePage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Card elevation={5} classes={{ root: classes.card }}>
+              <CardMedia
+                height="340"
+                component="img"
+                image="/characters.jpg"
+                title="Characters"
+              />
+              <CardContent>
+                <Typography variant="h6"><strong>Characters</strong></Typography>
+              </CardContent>
+            </Card>
+          </Link>
         </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Link href="/PlanetsPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Card elevation={5} classes={{ root: classes.card }}>
+              <CardMedia
+                height="340"
+                component="img"
+                image="/planets.png"
+                title="Planets"
+              />
+              <CardContent>
+                <Typography variant="h6"><strong>Planets</strong></Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Link href="/SpeciesPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Card elevation={5} classes={{ root: classes.card }}>
+              <CardMedia
+                height="340"
+                component="img"
+                image="/species.jpg"
+                title="Species"
+              />
+              <CardContent>
+                <Typography variant="h6"><strong>Species</strong></Typography>
+              </CardContent>
+            </Card>
+          </Link>
+        </Grid>
+      </Grid>
     </>
   );
 }
