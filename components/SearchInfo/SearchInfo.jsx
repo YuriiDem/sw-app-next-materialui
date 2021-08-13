@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     ul: {
         padding: '0',
         margin: '25px',
-        
+
     },
     card: {
         borderRadius: 18,
@@ -44,7 +44,7 @@ function SearchInfo({ data, link }) {
                             <Box component="div" display="flex" m={3} >
                                 <ul className={classes.ul} style={{ 'list-style-type': 'none' }}>
                                     {data.map(({ id, name }) =>
-                                        <Link href={`/${link}/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <Link href={{ pathname: `/${link}`, query: { id: `${id}` } }} style={{ textDecoration: 'none', color: 'inherit' }}>
                                             <li key={id} className={classes.typography}>
                                                 <span>{name}</span>
                                                 <Divider />
@@ -73,6 +73,6 @@ function SearchInfo({ data, link }) {
 SearchInfo.propTypes = {
     data: PropTypes.array,
     link: PropTypes.string,
-  }
+}
 
 export default SearchInfo;

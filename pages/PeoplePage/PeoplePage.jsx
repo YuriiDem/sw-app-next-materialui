@@ -13,7 +13,7 @@ import { withErrorApi } from '../../hoc-helpers/withErrorApi';
 import { useQueryParams } from '../../hooks/useQueryParams';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
-
+import { useRouter } from 'next/router';
 
 function PeoplePage({ setApiError }) {
   const [loading, setLoading] = useState(true);
@@ -25,8 +25,11 @@ function PeoplePage({ setApiError }) {
 
   const [counterPage, setCounterPage] = useState(1);
 
-  const query = useQueryParams();
-  const queryPage = query.get('page');
+  const router = useRouter();
+  const queryPage = router.query.page;
+  // const query = useQueryParams();
+  // const queryPage = query.get('page');
+  
 
 
 
@@ -58,8 +61,8 @@ function PeoplePage({ setApiError }) {
   }
 
   useEffect(() => {
-    getResources(API_PEOPLE );
-  }, []);
+    getResources(API_PEOPLE+queryPage);
+  }, [queryPage]);
 
   return (
     <>
