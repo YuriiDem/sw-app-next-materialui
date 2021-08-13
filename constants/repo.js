@@ -1,1 +1,1 @@
-export const REPO_NAME = 'sw-app-react-materialui'; 
+export const REPO_NAME = 'sw-app-next-materialui'; 
