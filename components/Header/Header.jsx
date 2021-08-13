@@ -23,17 +23,15 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-        display: 'flex',
-        alignItems: 'center',
+        // marginRight: theme.spacing(1),
+        // display: 'flex',
+        // alignItems: 'center',
     },
     LogoIcon: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: '40px',
         height: '40px',
-    },
-    brightness4Icon: {
-        marginLeft: theme.spacing(2),
     },
 }));
 
@@ -49,7 +47,7 @@ function Header({ theme, setTheme }) {
                 <Toolbar>
                     <Drawer className={classes.menuButton} />
 
-                    <Box className={classes.title}>
+                    <Box className={classes.title} style={{ flexGrow: 1 }}>
                         {/* <img src={Logo} alt="AppLogo" className={classes.LogoIcon} /> */}
                         <Typography variant="h6" noWrap >
                             <strong>SW WIKI</strong>
