@@ -62,7 +62,7 @@ function PeoplePage({ setApiError }) {
 
   useEffect(() => {
     getResources(API_PEOPLE+queryPage);
-  }, [queryPage]);
+  }, []);
 
   return (
     <>
