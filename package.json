@@ -1,8 +1,8 @@
 {
-  "name": "sw-app-react-materialui",
+  "name": "sw-app-next-materialui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yuriidem.github.io/sw-app-react-materialui/",
+  "homepage": "https://yuriidem.github.io/sw-app-next-materialui/",
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
