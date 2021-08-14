@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { getApiResources } from '../../utils/network';
+import { getStaticProps } from '../../utils/network';
 import { API_PLANETS } from '../../constants/api';
 import { API_PLANET_SEARCH } from '../../constants/api';
 import { getPlanetsId, getPlanetsImg, getPageId } from '../../services/getPeopleData';
@@ -12,7 +12,7 @@ import { useQueryParams } from '../../hooks/useQueryParams';
 import SearchBar from '../../components/SearchBar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
-
+import { useRouter } from 'next/router';
 
 
 function PlanetsPage({ setApiError }) {
@@ -25,14 +25,14 @@ function PlanetsPage({ setApiError }) {
 
   const [counterPage, setCounterPage] = useState(1);
 
-  const query = useQueryParams();
-  const queryPage = query.get('page');
+  const router = useRouter();
+  const queryPage = router.query.page;
 
   async function getResources(url) {
-    const res = await getApiResources(url);
+    const res = await getStaticProps(url);
 
-    if (res) {
-      const planetsList = res.results.map(({ name, url }) => {
+    if (res.props.data.results) {
+      const planetsList = res.props.data.results.map(({ name, url }) => {
         const id = getPlanetsId(url);
         const img = getPlanetsImg(id);
 
@@ -46,8 +46,8 @@ function PlanetsPage({ setApiError }) {
       setPlanets(planetsList);
       setLoading(false);
 
-      setPrev(res.previous);
-      setNext(res.next);
+      setPrev(res.props.data.previous);
+      setNext(res.props.data.next);
       setCounterPage(getPageId(url));
       setApiError(false);
     } else {
@@ -64,14 +64,14 @@ function PlanetsPage({ setApiError }) {
     <>
       <h2>Planets</h2>
       <PeopleNav
-        resource={'planets'}
+        resource={'PlanetsPage'}
         getResources={getResources}
         prev={prev}
         next={next}
         counterPage={counterPage}
       />
 
-      <SearchBar url={API_PLANET_SEARCH} getId={getPlanetsId} getImg={getPlanetsImg} link={'planets'} />
+      <SearchBar url={API_PLANET_SEARCH} getId={getPlanetsId} getImg={getPlanetsImg} link={'PlanetPage'} />
 
       {loading ? (
         <Box
@@ -82,7 +82,7 @@ function PlanetsPage({ setApiError }) {
           <CircularProgress color="inherit" />
         </Box>
       ) : planets && (
-        <PeopleList data={planets} link={'planets'} />
+        <PeopleList data={planets} link={'PlanetPage'} />
       )}
 
     </>

@@ -27,16 +27,16 @@ function PeoplePage({ setApiError }) {
 
   const router = useRouter();
   const queryPage = router.query.page;
-  
+
   // const query = useQueryParams();
   // const queryPage = query.get('page');
-  
+
 
 
 
   async function getResources(url) {
     const res = await getStaticProps(url);
-    
+
     if (res.props.data.results) {
       const peopleList = res.props.data.results.map(({ name, url }) => {
         const id = getPeopleId(url);
@@ -62,7 +62,7 @@ function PeoplePage({ setApiError }) {
   }
 
   useEffect(() => {
-    getResources(API_PEOPLE+queryPage);
+    getResources(API_PEOPLE + queryPage);
   }, []);
 
   return (
@@ -88,7 +88,7 @@ function PeoplePage({ setApiError }) {
           <CircularProgress color="inherit" />
         </Box>
       ) : people && (
-        <PeopleList data={people} link={'PersonPage'} queryPage={queryPage} />
+        <PeopleList data={people} link={'PersonPage'} />
       )}
 
 

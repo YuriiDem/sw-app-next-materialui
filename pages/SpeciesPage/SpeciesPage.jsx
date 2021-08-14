@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { getApiResources } from '../../utils/network';
+import { getStaticProps } from '../../utils/network';
 
 import { API_SPECIES } from '../../constants/api';
 import { getSpeciesId, getSpeciesImg, getPageId } from '../../services/getPeopleData';
 import PeopleList from '../../components/PeoplePage/PeopleList';
 import PeopleNav from '../../components/PeoplePage/PeopleNav';
 import { withErrorApi } from '../../hoc-helpers/withErrorApi';
-import { useQueryParams } from '../../hooks/useQueryParams';
+// import { useQueryParams } from '../../hooks/useQueryParams';
 import { API_SPECIES_SEARCH } from '../../constants/api';
 import SearchBar from '../../components/SearchBar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
-
+import { useRouter } from 'next/router';
 
 function SpeciesPage({ setApiError }) {
   const [loading, setLoading] = useState(true);
@@ -24,15 +24,15 @@ function SpeciesPage({ setApiError }) {
 
   const [counterPage, setCounterPage] = useState(1);
 
-  const query = useQueryParams();
-  const queryPage = query.get('page');
+  const router = useRouter();
+  const queryPage = router.query.page;
 
 
   async function getResources(url) {
-    const res = await getApiResources(url);
+    const res = await getStaticProps(url);
 
-    if (res) {
-      const speciesList = res.results.map(({ name, url }) => {
+    if (res.props.data.results) {
+      const speciesList = res.props.data.results.map(({ name, url }) => {
         const id = getSpeciesId(url);
         const img = getSpeciesImg(id);
 
@@ -46,10 +46,10 @@ function SpeciesPage({ setApiError }) {
       setSpecies(speciesList);
       setLoading(false);
 
-      setPrev(res.previous);
-      setNext(res.next);
+      setPrev(res.props.data.previous);
+      setNext(res.props.data.next);
       setCounterPage(getPageId(url));
-      setApiError(false);
+      setApiError(true);
     } else {
       setApiError(true);
     }
@@ -63,14 +63,14 @@ function SpeciesPage({ setApiError }) {
     <>
       <h2>Species</h2>
       <PeopleNav
-        resource={'species'}
+        resource={'SpeciesPage'}
         getResources={getResources}
         prev={prev}
         next={next}
         counterPage={counterPage}
       />
 
-      <SearchBar url={API_SPECIES_SEARCH} getId={getSpeciesId} getImg={getSpeciesImg} link={'species'} />
+      <SearchBar url={API_SPECIES_SEARCH} getId={getSpeciesId} getImg={getSpeciesImg} link={'SpeciesInfoPage'} />
 
       {loading ? (
         <Box
@@ -81,7 +81,7 @@ function SpeciesPage({ setApiError }) {
           <CircularProgress color="inherit" />
         </Box>
       ) : species && (
-        <PeopleList data={species} link={'species'} />
+        <PeopleList data={species} link={'SpeciesInfoPage'} />
       )}
     </>
   );

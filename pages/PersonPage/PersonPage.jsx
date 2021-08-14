@@ -5,6 +5,7 @@ import { getStaticProps } from '../../utils/network';
 import { API_PERSON } from '../../constants/api';
 import { withErrorApi } from '../../hoc-helpers/withErrorApi';
 import { getPeopleImg } from '../../services/getPeopleData';
+
 import PersonImage from '../../components/PeoplePage/PersonImage';
 import PersonInfo from '../../components/PeoplePage/PersonInfo';
 import GoBackLink from '../../components/GoBackLink';

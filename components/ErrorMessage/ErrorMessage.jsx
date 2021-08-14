@@ -1,12 +1,13 @@
 import SadStormtrooper from './img/sadstormtrooper.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Image from 'next/image';
+
 
 const useStyles = makeStyles((theme) => ({
     img: {
 
-        width: '100%',
-        height: '100%',
+        
         padding: theme.spacing(4),
     },
 }));
@@ -30,7 +31,12 @@ function ErrorMessage() {
                     </h1>
                 </Grid>
                 <Grid item xs>
-                    <img className={classes.img} src={SadStormtrooper} alt="Sad stormtrooper" />
+                    
+                    <Image
+                    className={classes.img}
+                    src={SadStormtrooper}
+                    alt="Sad stormtrooper"
+                    />
                 </Grid>
 
             </Grid>
