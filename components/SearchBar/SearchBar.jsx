@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import { useState, useEffect, useRef } from 'react';
-import { getApiResources } from '../../utils/network';
+import { getStaticProps } from '../../utils/network';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { withErrorApi } from '../../hoc-helpers/withErrorApi';
@@ -68,10 +68,10 @@ function SearchBar({ url, getId, getImg, link, setApiError }) {
 
 
     const getResponse = async params => {
-        const res = await getApiResources(url + params);
+        const res = await getStaticProps(url + params);
 
         if (res) {
-            const dataList = res.results.map(({ name, url }) => {
+            const dataList = res.props.data.results.map(({ name, url }) => {
                 const id = getId(url);
                 const img = getImg(id);
 

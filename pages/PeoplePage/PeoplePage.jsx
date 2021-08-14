@@ -27,6 +27,7 @@ function PeoplePage({ setApiError }) {
 
   const router = useRouter();
   const queryPage = router.query.page;
+  
   // const query = useQueryParams();
   // const queryPage = query.get('page');
   
@@ -35,8 +36,8 @@ function PeoplePage({ setApiError }) {
 
   async function getResources(url) {
     const res = await getStaticProps(url);
-    console.log(res)
-    if (res) {
+    
+    if (res.props.data.results) {
       const peopleList = res.props.data.results.map(({ name, url }) => {
         const id = getPeopleId(url);
         const img = getPeopleImg(id);
@@ -87,7 +88,7 @@ function PeoplePage({ setApiError }) {
           <CircularProgress color="inherit" />
         </Box>
       ) : people && (
-        <PeopleList data={people} link={'PersonPage'} />
+        <PeopleList data={people} link={'PersonPage'} queryPage={queryPage} />
       )}
 
 
