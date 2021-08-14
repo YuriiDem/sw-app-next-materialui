@@ -49,7 +49,7 @@ function SpeciesPage({ setApiError }) {
       setPrev(res.props.data.previous);
       setNext(res.props.data.next);
       setCounterPage(getPageId(url));
-      setApiError(true);
+      setApiError(false);
     } else {
       setApiError(true);
     }
