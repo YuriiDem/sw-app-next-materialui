@@ -29,7 +29,7 @@ function HomePage() {
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6} md={4}>
           <Link href="/PeoplePage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Card elevation={5} classes={{ root: classes.card }}>
+            <Card elevation={5} classes={{ root: classes.card }} style={{ cursor: 'pointer' }} >
               <CardMedia
                 height="340"
                 component="img"
@@ -44,7 +44,7 @@ function HomePage() {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Link href="/PlanetsPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Card elevation={5} classes={{ root: classes.card }}>
+            <Card elevation={5} classes={{ root: classes.card }} style={{ cursor: 'pointer' }} >
               <CardMedia
                 height="340"
                 component="img"
@@ -60,7 +60,7 @@ function HomePage() {
 
         <Grid item xs={12} sm={6} md={4}>
           <Link href="/SpeciesPage/?page=1" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Card elevation={5} classes={{ root: classes.card }}>
+            <Card elevation={5} classes={{ root: classes.card }} style={{ cursor: 'pointer' }} >
               <CardMedia
                 height="340"
                 component="img"
