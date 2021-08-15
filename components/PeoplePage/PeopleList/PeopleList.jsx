@@ -26,7 +26,7 @@ function PeopleList({ data, link }) {
         <Grid item key={id} xs={12} sm={6} md={4} >
           <Link href={ { pathname: `/${link}`, query: { id: `${id}` } } } style={{ textDecoration: 'none', color: 'inherit' }}>
         
-            <Card elevation={5} classes={{ root: classes.card }} >
+            <Card elevation={5} classes={{ root: classes.card }} style={{ cursor: 'pointer' }} >
               <CardMedia
                 height="260"
                 component="img"
